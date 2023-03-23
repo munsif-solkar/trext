@@ -1,0 +1,103 @@
+*{
+    Margin:0;
+    Padding:0;
+    Font-family:monospace;
+    box-sizing:border-box;
+    Letter-spacing:0.1;
+}
+Body{
+    Background:#F2F4F3;
+}
+Header{
+    Border-bottom:0px solid #fff;
+}
+Header nav{
+    Padding:15px;
+}
+Header nav a{
+    Text-decoration:none;
+    Font-size:22px;
+        Color:#000;    
+}
+Header nav p{
+    Margin:3px 0px;
+}
+.container{
+    Max-width:400px;
+    Margin:10px auto;
+    Background:none;
+    Padding:5px 10px;
+}
+.error_message{
+	color:red;
+	padding:4px 5px;
+	border-left:3px solid red;
+	border-radius:0px;
+	margin:0px 0px 10px 0px;
+}
+form{
+    background:#f8f8f8;
+    border-radius:3px;
+    border:0px solid #ccc;
+     box-shadow:0px 0px 5px #ccc;
+}
+.input-group{
+    Width:100%;
+    Display:block;
+    Padding:8px 10px;
+    Outline:none;
+    Font-family:sans-serif;
+   Border:0px solid #444444;
+   background:none;
+   color:#000;
+    
+}
+.page-title{
+    background:none;
+    font-weight:bold;
+    font-size:19px;
+    text-transform:uppercase;
+    border-bottom:1px dashed #ccc;
+}
+.textbox{
+ 
+    Resize:none;
+    border:0px solid #e7e7e7;
+    border-bottom:1px dashed #ccc;
+}
+.button-group{
+    border:none;
+}
+.page-controls section{
+    display:flex;
+    flex-wrap:wrap;
+    padding:6px;
+   } 
+.page-controls section label{
+    flex-basis:100%;
+    width:0;
+    margin:3px 2px;
+}
+.page-controls .input-group{
+    background:#e4e6eb;
+    flex-basis:50%;
+}
+.page-controls .control-buttons{
+    background:none;
+    width:30%;
+    text-decoration:underline;
+   } 
+  .custom-url-preview{
+      margin:10px 0px;
+      border:0px dashed #ccc;
+      width:100%;
+      padding:8px 5px;
+      border-radius:0px;
+      outline:none;
+  }
+.submit-button{
+    padding:8px 0px;
+    width:100%;
+   font-weight:bold;
+}
+

@@ -1,0 +1,32 @@
+html
+  head
+    title Host your text
+    meta(name='viewport', content='width=device-width,initial-scale=1.0')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js')
+    script(src='/public/javascript/script.js')
+    link(rel='stylesheet', href='/public/css/main-style.css')
+  body(ng-app='texttrack')
+    header
+      nav
+        a.nav-title(href='/')
+          strong TextTrack
+        p Expose your text by creating simple &amp; minimal webpage
+    .container
+      if error
+        p.error_message=error
+      form(method='POST' action='/')
+        input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_title)
+        textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body')=text_body
+        .page-controls(ng-controller='page-control')
+          // key
+          section
+            label Edit code
+            input.page-key.input-group(type='text', placeholder='....', ng-model='page_key', maxlength='9',name='edit_code',value=edit_code)
+            button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()') Random
+          // custom url
+          section
+            label Custom url
+            input.custom-url.input-group(type='text', placeholder='....', ng-model='custom_url', maxlength='15',name='custom_url',value=custom_url)
+            button.generate-random-url.button-group.control-buttons(type='button',ng-click='custom_url=genRandom()') Random
+            input.custom-url-preview(type='text', value='texttrack.com/{{custom_url}}', onclick='copyToClipboard(this)', readonly='')
+        button.submit-button.button-group(type='submit') CREATE
