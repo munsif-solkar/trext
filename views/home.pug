@@ -14,19 +14,28 @@ html
     .container
       if error
         p.error_message=error
-      form(method='POST' action='/')
-        input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_title)
-        textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body')=text_body
-        .page-controls(ng-controller='page-control')
-          // key
-          section
-            label Edit code
-            input.page-key.input-group(type='text', placeholder='....', ng-model='page_key', maxlength='9',name='edit_code',value=edit_code)
-            button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()') Random
-          // custom url
-          section
-            label Custom url
-            input.custom-url.input-group(type='text', placeholder='....', ng-model='custom_url', maxlength='15',name='custom_url',value=custom_url)
-            button.generate-random-url.button-group.control-buttons(type='button',ng-click='custom_url=genRandom()') Random
-            input.custom-url-preview(type='text', value='texttrack.com/{{custom_url}}', onclick='copyToClipboard(this)', readonly='')
-        button.submit-button.button-group(type='submit') CREATE
+      if mode=='create'
+        - var action = '/'
+      else
+        - var action = '/edit/'+custom_url
+        
+      form(method='POST',action=action,ng-controller='page-control')
+          input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40",required)
+          textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body',ng-model='text_body',maxlength="2000",minlength="10",required)=text_body
+          .page-controls
+            // key
+            section
+              label Edit code
+              input.page-key.input-group(type='text', placeholder='....',ng-model='page_key', maxlength='9',name='edit_code',value=edit_code,required)
+              if mode=='create'
+                  button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()',required) Random
+            // custom url
+            section
+              label Custom url
+              input.custom-url.input-group(type='text', placeholder='....', ng-model='custom_url', maxlength='20',name='custom_url',value=custom_url)
+              button.generate-random-url.button-group.control-buttons(type='button',ng-click='custom_url=genRandom()') Random
+              input.custom-url-preview(type='text', value='texttrack.com/{{custom_url}}', onclick='copyToClipboard(this)', readonly='')
+          if mode=='create'
+              button.submit-button.button-group(type='submit') CREATE
+          else
+              button.submit-button.edit-button.button-group(type='submit') SAVE CHANGES

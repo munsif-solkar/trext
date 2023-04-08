@@ -1,0 +1,24 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport",content="width=device-width,initial-scale=1.0")
+        title=data['text_header']
+        link(rel="stylesheet",href="/public/css/view-style.css")
+    body
+    .container
+       header
+           p.text_header=data['text_header']
+           span.date=data['date']
+       .text_body
+           main
+             pre=data['text_body']
+       .container_footer
+           .app-credits
+              a(href="/") TextTrack
+           aside
+               a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
+               a(href="#",class="share_button",title="Share link") Share
+
+    footer.default_footer
+       p.footer_text Created using texttrack.com
+
