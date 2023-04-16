@@ -1,0 +1,20 @@
+const domp = require('dompurify');
+const { JSDOM } = require('jsdom');
+class TextFormat{
+	purify(text){
+		const window = new JSDOM('').window;
+		const DOMpurify = domp(window);
+		const sanitized = DOMpurify.sanitize(text);
+		return sanitized;
+	}
+	makeBold(text){
+		const regex = /\*\*([\s\S]*?)\*\*/g;
+		const result = text.replace(regex,"<b>$1</b>");
+		return result;
+	}
+}
+
+//export
+module.exports = TextFormat;
+
+

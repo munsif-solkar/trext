@@ -18,8 +18,8 @@ Header nav{
 Header nav a{
     Text-decoration:none;
     Font-size:22px;
-        Color:#000;
-	border-bottom:2px solid #000;    
+    Color:#000;
+    border-bottom:2px solid #000;    
 }
 Header nav p{
     Margin:15px 0px 0px 0px;
@@ -30,18 +30,28 @@ Header nav p{
     Background:none;
     Padding:5px 10px;
 }
+.show_mode{
+    background:;
+    max-width:max-content;
+    color:#444444;
+    padding:3px 6px;
+    border-radius:3px;
+    margin:5px 0px;
+    font-weight:bold;
+}
 .error_message{
-	color:red;
-	padding:4px 5px;
-	border-left:3px solid red;
-	border-radius:0px;
-	margin:0px 0px 10px 0px;
+    color:red;
+    padding:4px 8px;
+    border-left:3px solid red;
+    border-radius:0px;
+    margin:0px 0px 10px 0px;
 }
 form{
     background:#f8f8f8;
     border-radius:3px;
     border:0px solid #ccc;
-     box-shadow:0px 0px 5px #ccc;
+    box-shadow:0px 0px 0px #ccc;
+    border:1px solid #e1e3e6;
 }
 .input-group{
     Width:100%;
@@ -58,8 +68,10 @@ form{
     background:none;
     font-weight:bold;
     font-size:19px;
-    text-transform:uppercase;
     border-bottom:1px dashed #ccc;
+}
+.page-title::placeholder{
+    font-size:15px;
 }
 .textbox{
  

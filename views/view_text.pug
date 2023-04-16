@@ -2,16 +2,19 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport",content="width=device-width,initial-scale=1.0")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js")
         title=data['text_header']
         link(rel="stylesheet",href="/public/css/view-style.css")
     body
     .container
+       - var text_title = data['text_header']
        header
-           p.text_header=data['text_header']
+           if text_title
+               p.text_header=text_title
            span.date=data['date']
        .text_body
            main
-             pre=data['text_body']
+             pre.text-body-content !{data['text_body']}
        .container_footer
            .app-credits
               a(href="/") TextTrack
@@ -21,4 +24,3 @@ html(lang="en")
 
     footer.default_footer
        p.footer_text Created using texttrack.com
-

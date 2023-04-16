@@ -2,7 +2,10 @@ const exp = require("express");
 const mongo = require("mongodb");
 const bodyParser = require("body-parser");
 const path = require("path");
+const textFormat = require('./lib/formatText');
+
 const app = exp()
+
 //STATIC FILES SETUP
 app.use('/public',exp.static('public'));
 
@@ -13,6 +16,9 @@ app.set('views',path.join(__dirname,'views'));
 //FORM DATA SETUP
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
+
+//TEXT FORMAT
+const tf = new textFormat();
 
 //DATABASE INTREGATION
 let db;
@@ -80,7 +86,7 @@ app.get('/',function(req,res){
 function verifyEntries(e){
 	//text header
 	th = e.text_header.trim();
-	th = (th && th.length <=  40);
+	th = (th.length <=  40);
 	//text body
 	tb = e.text_body.trim();
 	tb = (tb && tb.length <= 2000);
@@ -157,6 +163,8 @@ app.get('/:x',async (req,res)=>{
 	dbc.fetchAll(formatDate=true).then(function(fetchedData){
 	  if(dbc.exists()){
 	      data = fetchedData;
+	      const purify = tf.purify(data.text_body);
+	      data.text_body = tf.applyAll(purify);
 	      res.render('view_text',data);
 	  }else{
 	      res.send("Nothing found here!!");

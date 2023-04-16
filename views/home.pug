@@ -18,9 +18,9 @@ html
         - var action = '/'
       else
         - var action = '/edit/'+custom_url
-        
+      p.show_mode=mode        
       form(method='POST',action=action,ng-controller='page-control')
-          input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40",required)
+          input.page-title.input-group(type='text', placeholder='#TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40")
           textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body',ng-model='text_body',maxlength="2000",minlength="10",required)=text_body
           .page-controls
             // key

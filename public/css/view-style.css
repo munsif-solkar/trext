@@ -15,8 +15,9 @@ Body{
     Background:none;
     Padding:5px 0px 0px 0px;
     background:#f8f8f8;
-    box-shadow:0px 0px 5px #ccc;
+    box-shadow:0px 0px 0px #ccc;
     border-radius:3px;
+    border:1px solid #e1e3e6;
 }
 .container header{
     background:none;
@@ -32,17 +33,32 @@ header .date{
     display:block;
     padding:5px 2px;
     font-size:14px;
-    color:gray
+    color:gray;
+    word-spacing:5px;
 }
 .text_body{
     min-height:300px;
 }
 .text_body main{
     padding:15px;
-    line-height:23px;
-    word-wrap:Break-word;
    background:none;
 } 
+main pre{
+    word-wrap:Break-word;
+	white-space: pre-wrap;
+	text-indent:0;
+}
+main pre:not(.heading){
+	line-height:23px;
+}
+pre .heading{
+	white-space:normal;
+	color:#444444;
+}
+pre .mark-text{
+	background:#ed9d98;
+	padding:1px 2px;
+}
 .container_footer{
     background:#F5F5F5;
     margin:0px;
@@ -64,6 +80,7 @@ header .date{
     margin:0px 10px 0px 0px;
     text-decoration:underline;
     color:#000;
+    font-size:15px;
 
 }
 .default_footer{
