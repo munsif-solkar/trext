@@ -1,5 +1,6 @@
 const exp = require("express");
 const mongo = require("mongodb");
+const dbClient = require('./lib/dbMethods');
 const bodyParser = require("body-parser");
 const path = require("path");
 const textFormat = require('./lib/formatText');
@@ -36,38 +37,6 @@ async function connectDatabase(uri,dbname){
 }
 const uri = "mongodb+srv://Munsif:wasteinocean@cropchop.x60cw.mongodb.net/?retryWrites=true&w=majority";
 const dbname = "texttrack";
-
-//dbclient
-class dbClient{
-        constructor(url_query){
-                this.url_query = url_query.params.x;
-                this.fetched_data;
-        }
-        async fetchAll(formatDate=false){
-                this.fetched_data = await collection.find({'custom_url':this.url_query}).toArray();
-                if(formatDate && this.fetched_data.length > 0){
-                        const e = this.fetched_data[0]['date'];
-                        this.fetched_data[0]['date'] = `${e.getDate()}/${e.getMonth()+1}/${e.getFullYear()} ${e.getHours()}:${e.getMinutes()}`;
-                }
-                return this.fetched_data[0];
-        }
-        exists(){
-                if(this.fetched_data.length > 0){
-                        return true;
-                }else{
-                        return false;
-                }
-        }
-        edit_mode(error=0,setEditMode={}){                                                                                                                                              setEditMode['edit_code'] = '';
-                setEditMode['mode'] = 'edit';
-                setEditMode['error'] = error;
-                return setEditMode;
-        }
-        async update(updatedData){
-                await collection.updateOne({'custom_url':this.url_query},{$set:updatedData});
-        }
-}
-
 
 //ROUTES
 app.get('/',function(req,res){
@@ -152,7 +121,7 @@ app.post('/',async function(req,res){
 
 //view page
 app.get('/:x',async (req,res)=>{
-	const dbc = new dbClient(req);
+	const dbc = new dbClient(req,collection);
 	dbc.fetchAll(formatDate=true).then(function(fetchedData){
 	  if(dbc.exists()){
 	      data = fetchedData;
@@ -173,7 +142,7 @@ var admin = true;
 //edit
 app.get("/edit/:x",async (req,res)=>{
 	console.log(req.hostname);
-	const dbc = new dbClient(req);
+	const dbc = new dbClient(req,collection);
 	dbc.fetchAll().then(function(fetched_data){
 		if(dbc.exists()){
                     data = dbc.edit_mode(error=0,setEditMode=fetched_data);
@@ -198,7 +167,7 @@ function verify_code(code,codex){
 app.post('/edit/:x',(req,res)=>{
 	const new_data = req.body;
 	console.log(new_data);
-	const dbc = new dbClient(req);
+	const dbc = new dbClient(req,collection);
 	if(dbc.url_query == 'howtouse' && !admin){
 		res.redirect('/'+dbc.url_query);
 		return;
