@@ -1,26 +1,30 @@
 html(lang="en")
     head
+        - var text_title = data['text_header']
         meta(charset="UTF-8")
         meta(name="viewport",content="width=device-width,initial-scale=1.0")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js")
-        title=data['text_header']
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js")
+        script(src="/public/javascript/view.js")
+        if text_title
+            title=text_title
+        else
+            title='TRext page'
         link(rel="stylesheet",href="/public/css/view-style.css")
-    body
+    body(ng-app="trextViewModule")
     .container
-       - var text_title = data['text_header']
        header
-           if text_title
-               p.text_header=text_title
-           span.date=data['date']
+           p.text_header=text_title
+           span.date="Pub: "+data['date']
        .text_body
            main
              pre.text-body-content !{data['text_body']}
-       .container_footer
+       .container_footer(ng-controller='footer-actions')
            .app-credits
               a(href="/") TextTrack
            aside
                a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
-               a(href="#",class="share_button",title="Share link") Share
+               a(class="share_button",title="Share link",ng-click='share()') Share
 
     footer.default_footer
        p.footer_text Created using texttrack.com

@@ -9,17 +9,16 @@ class TextFormat{
 		this.makeItalic(this.text);
                 this.highlight(this.text);
 		this.heading(this.text);
-		this.section(this.text);
 		return this.text;
         }
 	makeBold(e){
-		const regex = /\*\*(.+?)\*\*/g;
+		const regex = /\*\*(\S.+)\*\*/g;
 		const result = e.replace(regex,"<b class='bold-text'>$1</b>");
 		this.text = result;
 		return result;
 	}
 	makeItalic(e){
-		const regex = /\*(.+?)\*/g;
+		const regex = /\*(\S.+)\*/g;
 		const result = e.replace(regex,"<i class='italic-text'>$1</i>");
 		this.text = result;
 		return result;
@@ -47,26 +46,10 @@ class TextFormat{
 		return result
 	}
 	highlight(e){
-		const regex = /&&(.+?)&&/g;
-		const result = e.replace(regex,"<mark class='mark-text'>$1</mark>")
+		const regex = /&&(\S.+)&&/g;
+		const result = e.replace(regex,"<mark class='mark-text'>$1</mark>");
 		this.text = result;
 		return result
-	}
-	section(e){
-		//console.log(e);
-		const lines = e.split('\r');
-		console.log(lines);
-		var result = "";
-		for(var line of lines){
-			if(line.trim()=='----'){
-				result += "<hr class='h-line'/>";
-			}
-			else{
-				result += line+'\n';
-			}
-		}
-		this.text=result;
-		return result;
 	}
 }
 

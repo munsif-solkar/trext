@@ -13,16 +13,16 @@ Body{
     Max-width:700px;
     Margin:15px auto;
     Background:none;
-    Padding:5px 0px 0px 0px;
+    Padding:0px 0px 0px 0px;
     background:#f8f8f8;
     box-shadow:0px 0px 0px #ccc;
     border-radius:3px;
     border:1px solid #e1e3e6;
 }
 .container header{
-    background:none;
+    background:#f5f5f5;
     padding:8px 15px;
-    border-bottom:1px dashed #dadada;
+    border-bottom:1px solid #dadada;
 }
 header .text_header{
     font-size:22px;
@@ -40,24 +40,37 @@ header .date{
     min-height:300px;
 }
 .text_body main{
-    padding:15px;
+    padding:0px;
    background:none;
+	overflow:hidden;
 } 
 main pre{
     word-wrap:Break-word;
 	white-space: pre-wrap;
 	text-indent:0;
 }
+main pre .raw_text{
+	background:red;
+}
 main pre:not(.heading){
-	line-height:23px;
+	line-height:22px;
+	padding:15px;
 }
 pre .heading{
 	white-space:normal;
 	color:#444444;
+	line-height:30px;
+	margin:3px 0px;
 }
 pre .mark-text{
 	background:#ed9d98;
 	padding:1px 2px;
+}
+pre .h-line{
+	border:none;
+	border-bottom:1px solid #dadada;
+	margin:15px 0px;
+	transform:scale(1.1);
 }
 .container_footer{
     background:#F5F5F5;

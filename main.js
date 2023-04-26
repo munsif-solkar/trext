@@ -142,13 +142,6 @@ app.post('/',async function(req,res){
 	catch(err){
 		console.log(err);
 		var error_message = err;
-		//var onError = {
-		//	'error':error_message,
-		//	'text_header':text_header,
-		//	'text_body':text_body,
-		//	'edit_code':edit_code,
-		//	'custom_url':custom_url
-		//};
 		fdata['error'] = error_message;
 		fdata['mode'] = 'create';
 		console.log(fdata);
@@ -163,6 +156,10 @@ app.get('/:x',async (req,res)=>{
 	dbc.fetchAll(formatDate=true).then(function(fetchedData){
 	  if(dbc.exists()){
 	      data = fetchedData;
+	      if(dbc.url_query=='howtouse'){
+		res.render('view_text',data);
+		return;
+	      }
 	      const purify = tf.purify(data.text_body);
 	      data.text_body = tf.applyAll(purify);
 	      res.render('view_text',data);
@@ -171,6 +168,8 @@ app.get('/:x',async (req,res)=>{
 	  }
 	});
 })
+
+var admin = true;
 //edit
 app.get("/edit/:x",async (req,res)=>{
 	console.log(req.hostname);
@@ -178,6 +177,10 @@ app.get("/edit/:x",async (req,res)=>{
 	dbc.fetchAll().then(function(fetched_data){
 		if(dbc.exists()){
                     data = dbc.edit_mode(error=0,setEditMode=fetched_data);
+		    if(dbc.url_query=='howtouse' && !admin){
+			data['text_body'] = "Dude you can't edit this.";
+			data['edit_code'] = "hehehehe";
+		    }
 		    console.log(data);
                     res.render('home',data);
         	}else{
@@ -196,6 +199,10 @@ app.post('/edit/:x',(req,res)=>{
 	const new_data = req.body;
 	console.log(new_data);
 	const dbc = new dbClient(req);
+	if(dbc.url_query == 'howtouse' && !admin){
+		res.redirect('/'+dbc.url_query);
+		return;
+	}
 	dbc.fetchAll().then(function(fetched_data){
 		if(dbc.exists()){
 			const date = fetched_data.date;

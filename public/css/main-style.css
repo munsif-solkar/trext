@@ -30,21 +30,34 @@ Header nav p{
     Background:none;
     Padding:5px 10px;
 }
-.show_mode{
-    background:;
+.upper-section{
+    display:flex;
+    background:none;
+    padding:8px 10px;
+    justify-content:space-between;
+    align-items:Center;
+}
+.upper-section .show_mode{
     max-width:max-content;
     color:#444444;
-    padding:3px 6px;
     border-radius:3px;
-    margin:5px 0px;
     font-weight:bold;
+}
+.upper-section .help-button{
+    color:#151719;
+    border:1px solid #cbdbf5;
+    padding:5px;
+    border-radius:3px;
+    text-decoration:none;
+    background:#edf2fa;
+    word-spacing:-4px;
 }
 .error_message{
     color:red;
     padding:4px 8px;
     border-left:3px solid red;
     border-radius:0px;
-    margin:0px 0px 10px 0px;
+    margin:0px 10px;
 }
 form{
     background:#f8f8f8;
