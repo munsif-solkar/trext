@@ -7,7 +7,7 @@
 }
 Body{
     Background:#F2F4F3;
-    padding:0px 10px;
+    padding:0px 10px 50px 10px;
 } 
 .container{
     Max-width:700px;
@@ -95,17 +95,4 @@ pre .h-line{
     color:#000;
     font-size:15px;
 
-}
-.default_footer{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:none;
-}
-.default_footer .footer_text{
-    text-align:center;
-    padding:8px 5px;
-    color:gray;
-    display:none;
 }

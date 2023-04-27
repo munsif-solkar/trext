@@ -11,6 +11,7 @@ html(lang="en")
         else
             title='TRext page'
         link(rel="stylesheet",href="/public/css/view-style.css")
+        link(rel='stylesheet',href='/public/css/footer.css')
     body(ng-app="trextViewModule")
     .container
        header
@@ -26,5 +27,4 @@ html(lang="en")
                a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
                a(class="share_button",title="Share link",ng-click='share()') Share
 
-    footer.default_footer
-       p.footer_text Created using texttrack.com
+    include footer.pug

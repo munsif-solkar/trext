@@ -6,10 +6,11 @@
     Letter-spacing:0.1;
 }
 Body{
-    Background:#F2F4F3;
+	padding-bottom:50px;
+    Background:#F2F4F4;
 }
 Header{
-    max-width:400px;
+    max-width:500px;
     margin:0px auto;
 }
 Header nav{
@@ -25,7 +26,7 @@ Header nav p{
     Margin:15px 0px 0px 0px;
 }
 .container{
-    Max-width:400px;
+    Max-width:500px;
     Margin:0px auto;
     Background:none;
     Padding:5px 10px;

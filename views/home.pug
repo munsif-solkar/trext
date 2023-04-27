@@ -6,6 +6,7 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js')
     script(src='/public/javascript/script.js')
     link(rel='stylesheet', href='/public/css/main-style.css')
+    link(rel='stylesheet' href='/public/css/footer.css')
   body(ng-app='trext')
     header
       nav
@@ -42,3 +43,4 @@ html
               button.submit-button.button-group(type='submit') CREATE
           else
               button.submit-button.edit-button.button-group(type='submit') SAVE CHANGES
+    include footer.pug
