@@ -6,7 +6,6 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js')
     script(src='/public/javascript/script.js')
     link(rel='stylesheet', href='/public/css/main-style.css')
-    link(rel='stylesheet' href='/public/css/footer.css')
   body(ng-app='trext')
     header
       nav
@@ -24,7 +23,7 @@ html
           p.show_mode=mode
           a.help-button(href="/howtouse") How to use?        
       form(method='POST',action=action,ng-controller='page-control')
-          input.page-title.input-group(type='text', placeholder='#TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40")
+          input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40")
           textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body',ng-model='text_body',maxlength="2000",minlength="10",required)=text_body
           .page-controls
             // key

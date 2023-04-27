@@ -1,0 +1,34 @@
+html
+  head
+    title Trext saved
+    link(rel='stylesheet',href='/public/css/save_portal.css')
+    meta(name='viewport',content='width=device-width,initial-scale=1.0')
+  body
+    .container
+        h1 Your TRext page has been created
+        .page-information
+           .info
+               p!= 'Page url:&nbsp;&nbsp;'
+               a(href='/'+custom_url)=custom_url
+           .info
+               p!= 'Edit code:&nbsp;&nbsp;'
+               p=edit_code
+        .save-section
+           h3 SAVE THIS!!!!
+           p Save your page information, in case you ever forget it you can look through the saved file (or you can just take sceenshot).
+           button(class='save_button') Save
+        a(href='/'+custom_url,class='page_navigate') Go to page
+    include footer.pug
+    script.
+        const save_button = document.querySelector('.save_button');
+        var filename = '#{text_header}'
+        const data = 'TRext page created at: #{date}\n\nPage url: #{custom_url}\n\nEdit Code: #{edit_code}';
+        const link = document.createElement("a");
+        const file = new Blob([data], { type: 'text/plain' });
+        link.href = URL.createObjectURL(file);
+        if(!filename){filename='trext_page.txt'}
+        link.download = filename;
+        save_button.addEventListener('click',function(){
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });

@@ -98,15 +98,15 @@ app.post('/',async function(req,res){
 		if(url_available.length > 0){
 		    throw "URL not available!";
 		}
-		await collection.insertOne({
-					'text_header':text_header,
-					'text_body':text_body,
-					'edit_code':edit_code,
-					'custom_url':custom_url,
-					'date':date
-				});
+		var data = {'text_header':text_header,
+                        'text_body':text_body,
+                        'edit_code':edit_code,
+                        'custom_url':custom_url,
+                        'date':date
+                        }
+		await collection.insertOne(data);
 		console.log("successfully added data");
-		res.redirect("/"+custom_url);
+		res.render('save',data);
 	}
 	catch(err){
 		console.log(err);

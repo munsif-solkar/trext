@@ -11,7 +11,6 @@ html(lang="en")
         else
             title='TRext page'
         link(rel="stylesheet",href="/public/css/view-style.css")
-        link(rel='stylesheet',href='/public/css/footer.css')
     body(ng-app="trextViewModule")
     .container
        header
@@ -22,7 +21,7 @@ html(lang="en")
              pre.text-body-content !{data['text_body']}
        .container_footer(ng-controller='footer-actions')
            .app-credits
-              a(href="/") TextTrack
+              a(href="/") TRext
            aside
                a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
                a(class="share_button",title="Share link",ng-click='share()') Share

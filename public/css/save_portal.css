@@ -1,0 +1,49 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+body{
+background:#f4f4f4;
+padding-bottom:50px;
+}
+h1,h3{
+margin:0px 0px 5px 0px;
+}
+.container{
+padding:1rem;
+max-width:500px;
+margin:10px auto;
+}
+.page-information{
+margin:10px 0px;
+background:#fff;
+padding:6px;
+border:1px solid #dadada;
+border-radius:3px;
+}
+.info{
+display:flex;
+margin:8px 0px;
+}
+.info a{
+color:#151719;
+}
+.save-section{
+    padding:10px 2px;
+}
+button{
+	margin:10px 0px;
+	padding:5px 20px;
+	font-weight:bld;
+	background:#fff;
+	border:1px solid #ccc;
+	font-size:18px;
+}
+.page_navigate{
+    text-align:center;
+    display:block; 
+    margin:20px 0px;
+    color:#151719;
+}
