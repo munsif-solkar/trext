@@ -138,7 +138,7 @@ app.get('/:x',async (req,res)=>{
 	});
 })
 
-var admin = true;
+var admin = false;
 //edit
 app.get("/edit/:x",async (req,res)=>{
 	console.log(req.hostname);
