@@ -1,0 +1,29 @@
+.main-card{
+	border:1px solid #dadada;
+	margin:5px 0px;
+	background:#fff;
+	border-radius:3px;
+}
+.main-card a{
+	text-decoration:underline;
+	color:#000;
+}
+.card-header .title,.date{
+padding:6px 10px;
+}
+.card-header .title{
+	font-size:18px;
+	font-family:sans-serif;
+	border-bottom:1px solid #dadada;
+	font-weight:bold;
+	color:#444444;
+	background:#f9f9f9;
+	padding:1rem;
+}
+.card-footer{
+	padding:1rem 2rem;
+	text-align:right;
+}
+.card-footer a{
+	font-weight:bold;
+}

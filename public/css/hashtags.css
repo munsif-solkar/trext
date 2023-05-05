@@ -1,0 +1,45 @@
+.hashtags-container{
+	background:none;
+	border:1px solid #ccc;
+	border-radius:3px;
+	margin:5px 0px;
+}
+.hashtags-container .title{
+	font-family:sans-serif;
+	padding:0.5rem;
+	border-bottom:1px solid #ccc;
+	background:#f2f2f2;
+	font-size:14px;
+	line-height:18px
+}
+.hashtags-container .tags-counter{
+	background:none;
+}
+.meta-information{
+width:100%;
+resize:none;
+outline:none;
+background:#fff;
+border:none;
+padding:10px 12px;
+height:100px;
+color: #051d6c;
+
+}
+.hashtags-constructor{
+	display:flex;
+	border-top:1px solid #ccc;
+}
+.create-tag,.add-tag{
+	padding:8px 13px;
+	border:none;
+	background:aliceblue;
+	outline:none;
+}
+.create-tag{
+width:100%;
+}
+.add-tag{
+border-left:1px solid #ccc;
+
+}

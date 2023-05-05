@@ -1,0 +1,25 @@
+html
+    head
+        meta(name='viewport',content="width=device-width,initial-scale=1.0")
+        meta(name='description',content="Explore Trext's created by everyone.")
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js")
+        link(rel='stylesheet',href='/public/css/explore.css')
+        link(rel='stylesheet',href='/public/css/tags-preview.css')
+        link(rel='stylesheet',href='/public/css/commans.css') 
+        title TRext Explore
+    body
+        header
+           nav
+               a(href='/explore',class='nav-title')
+                   strong TRext Explore
+        .container
+            each obj in data
+                .main-card
+                   .card-header
+                       p.title=obj.text_header
+                       .tags_preview
+                           each tag in obj.tags
+                               p.tag=tag
+                       p.date='Pub: '+obj.date
+                   .card-footer
+                           a(class='open-page',href='/'+obj.custom_url) Open

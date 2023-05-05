@@ -1,0 +1,26 @@
+*{
+    Margin:0;
+    Padding:0;
+    Font-family:monospace;
+    box-sizing:border-box;
+    Letter-spacing:0.1;
+}    
+Body{
+padding-bottom:50px; 
+Background:#F2F4F4;
+}
+Header{
+    max-width:500px;
+    margin:0px auto;
+}
+Header nav{                                         Padding:15px;                               }                                               Header nav a{                                       Text-decoration:none;
+    Font-size:22px;                                 Color:#000;                                     border-bottom:2px solid #000;               }
+Header nav p{
+    Margin:15px 0px 0px 0px;
+}
+.container{
+    Max-width:500px;
+    Margin:0px auto;
+    Background:none;
+    Padding:5px 10px;
+}

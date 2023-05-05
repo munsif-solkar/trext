@@ -1,15 +1,13 @@
-html(ng-app='trext')
+html
   head
     title TRext Host your text
     meta(name='description' content="Trext is a platform that allows you to create and share text content with a range of formatting options. Whether you're looking to write a blog post, a personal journal entry, or a professional document, our site makes it easy to add emphasis, style, and clarity to your writing.")
     meta(name='viewport', content='width=device-width,initial-scale=1.0')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js')
-    script(src='/public/javascript/module.js')
-    script(src='/public/javascript/tagsConstrustor.js')
+    script(src='/public/javascript/exploreSettings.js')
     script(src='/public/javascript/script.js')
     link(rel='stylesheet', href='/public/css/main-style.css')
-    link(rel='stylesheet',href='/public/css/commans.css')
-  body
+  body(ng-app='trext')
     header
       nav
         a.nav-title(href='/')
@@ -25,27 +23,26 @@ html(ng-app='trext')
       .upper-section
           p.show_mode=mode
           a.help-button(href="/howtouse") How to use?        
-      form(method='POST',action=action,ng-controller='page-control',class='main-form')
+      form(method='POST',action=action,ng-controller='page-control')
           input.page-title.input-group(type='text', placeholder='TITLE',name='text_header',value=text_header,ng-model='text_header',minlength="1",maxlength="40")
           textarea.textbox.input-group(rows='18', placeholder='Type something... ',name='text_body',ng-model='text_body',maxlength="2000",minlength="10",required)=text_body
           .page-controls
             // explore
-            section(class='hashtags-section')
-              .section-child
-                   include hashtags.pug
+            section
+              label
+                input(type='checkbox',name='explore',ng-click='exploreToggle($event)')
+                p Explore {{a}}
             // key
             section
-              label(for='edit_code') Edit code
-              .section-child
-                  input.page-key.input-group(type='text', placeholder='....',ng-model='page_key', maxlength='9',name='edit_code',value=edit_code,required,id='edit_code')
-                  if mode=='create'
-                      button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()',required) Random
+              label Edit code
+              input.page-key.input-group(type='text', placeholder='....',ng-model='page_key', maxlength='9',name='edit_code',value=edit_code,required)
+              if mode=='create'
+                  button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()',required) Random
             // custom url
             section
               label Custom url
-              .section-child
-                  input.custom-url.input-group(type='text', placeholder='....', ng-model='custom_url', maxlength='20',name='custom_url',value=custom_url)
-                  button.generate-random-url.button-group.control-buttons(type='button',ng-click='custom_url=genRandom()') Random
+              input.custom-url.input-group(type='text', placeholder='....', ng-model='custom_url', maxlength='20',name='custom_url',value=custom_url)
+              button.generate-random-url.button-group.control-buttons(type='button',ng-click='custom_url=genRandom()') Random
               input.custom-url-preview(type='text', value='{{path(custom_url)}}', ng-click='copyToClipboard($event.target)', readonly='')
           if mode=='create'
               button.submit-button.button-group(type='submit') CREATE

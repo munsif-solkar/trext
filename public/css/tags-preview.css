@@ -1,0 +1,14 @@
+.tags_preview{
+        border-left:1px solid #ccc;
+        padding-left:5px;
+        display:flex;
+        max-width:300px;
+        flex-wrap:wrap;
+}
+.tags_preview .tag{
+        font-size:15px;
+        margin:3px;
+}
+.card-header .tags_preview{
+	margin:10px;
+}

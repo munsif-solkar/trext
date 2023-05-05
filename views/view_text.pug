@@ -3,6 +3,7 @@ html(lang="en")
         - var text_title = data['text_header']
         meta(charset="UTF-8")
         meta(name="viewport",content="width=device-width,initial-scale=1.0")
+        meta(name="description",content=description)
         script(src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js")
         script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js")
         script(src="/public/javascript/view.js")
@@ -11,11 +12,15 @@ html(lang="en")
         else
             title='TRext page'
         link(rel="stylesheet",href="/public/css/view-style.css")
+        link(rel='stylesheet',href='/public/css/tags-preview.css')
     body(ng-app="trextViewModule")
     .container
        header
            p.text_header=text_title
            span.date="Pub: "+data['date']
+           .tags_preview
+               each tag in tags
+                   p.tag=tag
        .text_body
            main
              pre.text-body-content !{data['text_body']}

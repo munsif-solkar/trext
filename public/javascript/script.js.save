@@ -1,21 +1,22 @@
+const form = document.querySelector('form');
 app.controller("page-control", function($scope,$rootScope){
 		$scope.text_header = attrVal('.page-title');
 		$scope.text_body = attrVal('.textbox');
 		$scope.page_key = attrVal('.page-key');
 		$scope.custom_url = attrVal('.custom-url');
-		$scope.form = document.getElementsByClassName('main-form')[0];
-		$scope.metaInformation = attrVal('.meta-information');
+		$scope.explore = false;
+		$scope.hashtagsVisibility = false;
 	    //random string generator
-                $scope.genRandom = function(){
-                    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    		    const length=6;
-    		    let result = '';
-    		    const charactersLength = characters.length;
-    		    for (let i = 0; i < length; i++ ) {
+            $scope.genRandom = function(){
+                const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    		const length=6;
+    		let result = '';
+    		const charactersLength = characters.length;
+    		for (let i = 0; i < length; i++ ) {
         		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            	    };
-            	    return result;
-                }
+            	};
+            	return result;
+            }
 	    //ends
 	    $scope.copyToClipboard = function(e){
 		e.select();
@@ -35,16 +36,10 @@ app.controller("page-control", function($scope,$rootScope){
 		$rootScope.$broadcast('displayHashtags', args);
 	   };
 	   $scope.submitForm = function(){
-		const getTags = $scope.$$childHead.tags;
 		if($scope.explore){
-			if(getTags.length > 0){
-				$scope.form.submit();
-			}else{
-				alert('Please add few tags!');
-			}
-			return;
+			
 		}
-		$scope.form.submit();
+		form.submit()
 	   }
         })
 	function attrVal(query){

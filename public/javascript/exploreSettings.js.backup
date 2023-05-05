@@ -1,0 +1,31 @@
+var newInputElement;
+app.run(function($rootScope) {
+    $rootScope.$on('displayHashtags', function(event, args) {
+	var checkbox = args.checkbox;
+	var scope = args.scope;
+	if(checkbox.checked){
+		scope.hashtagsVisibility = true;
+		scope.explore = true;
+		//create extra element for explorer
+		createInputElement(scope.$$childHead.tags);
+	}else{
+		scope.hashtagsVisibility = false;
+		scope.explore = false
+		if(newInputElement){
+		    newInputElement.remove()
+		}
+	}
+    });
+});
+
+function createInputElement(data){
+	const form = document.querySelector('form');
+	const input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('ng-required', 'required');
+	input.setAttribute('name', 'explore');
+	input.setAttribute('class','explore-tags');
+	input.setAttribute('value',data);
+	scope.form.appendChild(input);
+	newInputElement = input;
+}
