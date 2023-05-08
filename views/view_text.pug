@@ -18,15 +18,17 @@ html(lang="en")
        header
            p.text_header=text_title
            span.date="Pub: "+data['date']
-           .tags_preview
-               each tag in tags
-                   p.tag=tag
+           if tags
+               .tags_preview
+                   each tag in tags
+                       p.tag
+                           a(href='/')=tag
        .text_body
            main
              pre.text-body-content !{data['text_body']}
        .container_footer(ng-controller='footer-actions')
            .app-credits
-              a(href="/") TRext
+              a(href="/") Create Your TRext
            aside
                a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
                a(class="share_button",title="Share link",ng-click='share()') Share

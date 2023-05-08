@@ -1,3 +1,5 @@
+const formatText = require('../../lib/formatText');
+var tf = new formatText();
 function checkField(object,field){
 	var exists = Object.keys(object).includes(field);
 	return exists
@@ -11,6 +13,7 @@ exports.getExplorePage = async (req,res,collection)=>{
 			var date = object['date'];
 			date = `${date.getDate()} ${date.toLocaleString('default',{'month':'short'})} ${date.getFullYear()}`;
 			object['date'] = date;
+			object.meta_information = tf.formatHashtags(tf.purify(object.meta_information));
 			display_data.push(object)
 		}
             }

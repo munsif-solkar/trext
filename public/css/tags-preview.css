@@ -1,14 +1,25 @@
+:root{
+	--tag-color:#266696;
+}
 .tags_preview{
-        border-left:1px solid #ccc;
-        padding-left:5px;
+        border-left:0px solid #ccc;
+        padding-left:0px;
         display:flex;
         max-width:300px;
         flex-wrap:wrap;
 }
+.explore-tab-tags{
+	border:none;
+	padding:0px;
+}
 .tags_preview .tag{
         font-size:15px;
-        margin:3px;
+        margin:3px 6px 3px 0px;
 }
 .card-header .tags_preview{
-	margin:10px;
+	margin:5px 10px;
+}
+.tags_preview a,.formatted-tag{
+	text-decoration:none;
+	color:var(--tag-color);
 }

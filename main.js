@@ -80,14 +80,14 @@ function verifyEntries(e){
 	if(raw_cu != cu){cu=''};
 	cu = (cu && cu.length <= 20 && cu.length >= 5);
 	//hashtags
-	const tagsCriteria = /#[a-zA-Z0-9]+/g;
+	const tagsCriteria = /#[a-zA-Z0-9]{1,20}\b/g;
 	var check_tags = e.meta_information.match(tagsCriteria);
-	check_tags.map((tag)=>{
+	check_tags ? check_tags.map((tag)=>{
 	        isValid = tag.match(tagsCriteria);
 	        if(tag && !isValid){
 	            throw "Invalid tags! Tag should'nt contain symbols";
 	        }
-	 })
+	 }) : null;
 	//final check
 	if(!th){
 		throw "Please check your Title Field it must contain minimum of 1 character and max 20 characters are allowed.";
@@ -111,7 +111,7 @@ var exception_urls=['explore','Explore','EXPLORE'];
 
 //filter tags
 function splitMetaInformation(meta_information,filter='tags'){
-	const regex = /#[a-zA-Z0-9]+/g;
+	const regex = /#[a-zA-Z0-9]{1,20}\b/g;
 	const filterOut = {'tags':function(data){
 				      if(!data){return []}
 				      var tags_found = data.match(regex);

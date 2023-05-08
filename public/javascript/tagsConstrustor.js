@@ -7,7 +7,7 @@ app.controller('hashtags',function($scope){
 
 function constructTag(tags){
 	console.log(tags);
-	const tagCriteria = /#[a-zA-Z0-9]+/g;
+	const tagCriteria = /#[a-zA-Z0-9]{1,20}\b/g;
 	tags = tags.trim();
 	tags_matches = tags.match(tagCriteria);
 	if(tags_matches && tags_matches.length > 0 || tags_matches === null){

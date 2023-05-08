@@ -9,17 +9,24 @@ html
         title TRext Explore
     body
         header
-           nav
-               a(href='/explore',class='nav-title')
-                   strong TRext Explore
+           nav.explore-tab-nav
+               .hyperlinks-section
+                   a(href='/explore',class='nav-title')
+                       strong TRext Explore
+                       .other-pages
+                           a(href="/") Home
+                           a(href="/") Create
         .container
             each obj in data
                 .main-card
                    .card-header
-                       p.title=obj.text_header
-                       .tags_preview
-                           each tag in obj.tags
-                               p.tag=tag
+                       - var title = obj.text_header
+                       if !title
+                           title='Untitled'
+                       p.title=title
+                       .page-description
+                           strong Description
+                           p.description!=obj.meta_information
                        p.date='Pub: '+obj.date
                    .card-footer
                            a(class='open-page',href='/'+obj.custom_url) Open

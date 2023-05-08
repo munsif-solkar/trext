@@ -13,10 +13,32 @@ Header{
     max-width:500px;
     margin:0px auto;
 }
-Header nav{                                         Padding:15px;                               }                                               Header nav a{                                       Text-decoration:none;
-    Font-size:22px;                                 Color:#000;                                     border-bottom:2px solid #000;               }
+header nav{
+padding:15px;
+}
+Header nav .hyperlinks-section{
+display:flex;
+justify-content:space-between;
+align-items:center;
+ }
+Header nav a{ 
+  Text-decoration:none;
+    Font-size:22px;
+ Color:#000; 
+border-bottom:2px solid #000;
+ }
 Header nav p{
     Margin:15px 0px 0px 0px;
+}
+header .other-links{
+
+
+}
+Header .other-pages a{
+	font-size:14px;
+	margin:0px 5px;
+	text-decoration:underline;
+	border:none
 }
 .container{
     Max-width:500px;
