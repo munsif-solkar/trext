@@ -9,6 +9,15 @@
 	text-decoration:underline;
 	color:#000;
 }
+.results-criteria{
+	max-width:max-content;
+	padding:5px;
+	border-left:2px solid #000;
+}
+.results-criteria p{
+	padding:3px;
+	font-weight:bold;
+}
 .card-header .title,.date{
 padding:6px 10px;
 }

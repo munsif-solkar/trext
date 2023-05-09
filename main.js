@@ -1,6 +1,6 @@
 const exp = require("express");
 const mongo = require("mongodb");
-const dbClient = require('./lib/dbMethods');
+const dbMethods = require('./lib/dbMethods');
 const bodyParser = require("body-parser");
 const path = require("path");
 const textFormat = require('./lib/formatText');
@@ -173,7 +173,7 @@ app.post('/',async function(req,res){
 
 //view page
 app.get('/:x',async (req,res)=>{
-	const dbc = new dbClient(req,collection);
+	const dbc = new dbMethods(req,collection);
 	dbc.fetchAll(formatDate=true).then(function(fetchedData){
 	  if(dbc.exists()){
 	      data = fetchedData;
@@ -195,7 +195,7 @@ var admin = false;
 //edit
 app.get("/edit/:x",async (req,res)=>{
 	console.log(req.hostname);
-	const dbc = new dbClient(req,collection);
+	const dbc = new dbMethods(req,collection);
 	dbc.fetchAll().then(function(fetched_data){
 		if(dbc.exists()){
                     data = dbc.edit_mode(error=0,setEditMode=fetched_data);
@@ -221,7 +221,7 @@ app.post('/edit/:x',(req,res)=>{
 	const new_data = req.body;
 	var explore;
 	console.log(new_data);
-	const dbc = new dbClient(req,collection);
+	const dbc = new dbMethods(req,collection);
 	if(dbc.url_query == 'howtouse' && !admin){
 		res.redirect('/'+dbc.url_query);
 		return;

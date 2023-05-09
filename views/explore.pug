@@ -17,6 +17,13 @@ html
                            a(href="/") Home
                            a(href="/") Create
         .container
+            - var resultsCriteria = 'Rendering all'
+            .results-criteria
+                if resultsBy
+                    resultsCriteria='Results by: #'+resultsBy
+                else
+                    p.results=resultsCriteria
+                p.results-count='Found: '+data.length
             each obj in data
                 .main-card
                    .card-header

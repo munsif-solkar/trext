@@ -1,11 +1,20 @@
 const formatText = require('../../lib/formatText');
+const dbMethods = require('../../lib/dbMethods');
 var tf = new formatText();
 function checkField(object,field){
 	var exists = Object.keys(object).includes(field);
 	return exists
 }
 exports.getExplorePage = async (req,res,collection)=>{
-	const data = await collection.find({}).toArray();
+	var data = [];
+	var tag = req.query.tag;
+	const dbc = new dbMethods(req,collection,find='query');
+	await dbc.fetchByTag().then(fetched_data=>{
+		if(dbc.exists()){
+			data = fetched_data;
+			console.log(data);
+		}
+	})
 	const display_data = [];
 	data.map(function(object){
 	    if(checkField(object,'description') && checkField(object,'tags')){
@@ -18,7 +27,7 @@ exports.getExplorePage = async (req,res,collection)=>{
 		}
             }
 	})
-	res.render('explore',{'data':display_data});
+	res.render('explore',{'data':display_data,'resultsBy':tag});
 }
 module.exports={
 	'getExplorePage':exports.getExplorePage,
