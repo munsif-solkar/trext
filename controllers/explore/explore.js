@@ -7,9 +7,10 @@ function checkField(object,field){
 }
 exports.getExplorePage = async (req,res,collection)=>{
 	var data = [];
-	var tag = req.query.tag;
+	var tag = ""
 	const dbc = new dbMethods(req,collection,find='query');
 	await dbc.fetchByTag().then(fetched_data=>{
+		tag = dbc.resultsBy;
 		if(dbc.exists()){
 			data = fetched_data;
 			console.log(data);
@@ -20,7 +21,7 @@ exports.getExplorePage = async (req,res,collection)=>{
 	    if(checkField(object,'description') && checkField(object,'tags')){
 		if(object.tags.length > 0){
 			var date = object['date'];
-			date = `${date.getDate()} ${date.toLocaleString('default',{'month':'short'})} ${date.getFullYear()}`;
+			date = dbc.format_date(date);
 			object['date'] = date;
 			object.meta_information = tf.formatHashtags(tf.purify(object.meta_information));
 			display_data.push(object)

@@ -115,6 +115,9 @@ function splitMetaInformation(meta_information,filter='tags'){
 	const filterOut = {'tags':function(data){
 				      if(!data){return []}
 				      var tags_found = data.match(regex);
+				      tags_found = tags_found.map(element=>{
+				          return element.toLowerCase();
+				      })
 				      return tags_found;
 				  },
 			   'description':function(data){
@@ -174,7 +177,7 @@ app.post('/',async function(req,res){
 //view page
 app.get('/:x',async (req,res)=>{
 	const dbc = new dbMethods(req,collection);
-	dbc.fetchAll(formatDate=true).then(function(fetchedData){
+	dbc.fetchByUrl(formatDate=true).then(function(fetchedData){
 	  if(dbc.exists()){
 	      data = fetchedData;
 	      if(dbc.url_query=='howtouse'){
@@ -196,7 +199,7 @@ var admin = false;
 app.get("/edit/:x",async (req,res)=>{
 	console.log(req.hostname);
 	const dbc = new dbMethods(req,collection);
-	dbc.fetchAll().then(function(fetched_data){
+	dbc.fetchByUrl().then(function(fetched_data){
 		if(dbc.exists()){
                     data = dbc.edit_mode(error=0,setEditMode=fetched_data);
 		    if(dbc.url_query=='howtouse' && !admin){
@@ -226,7 +229,7 @@ app.post('/edit/:x',(req,res)=>{
 		res.redirect('/'+dbc.url_query);
 		return;
 	}
-	dbc.fetchAll().then(function(fetched_data){
+	dbc.fetchByUrl().then(function(fetched_data){
 		if(dbc.exists()){
 			const date = fetched_data.date;
 			try{
