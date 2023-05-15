@@ -186,7 +186,7 @@ app.get('/:x',async (req,res)=>{
 	      }
 	      const purify = tf.purify(data.text_body);
 	      data.text_body = tf.applyAll(purify);
-		console.log(data);
+//		console.log(data);
 	      res.render('view_text',data);
 	  }else{
 	      res.send("Nothing found here!!");

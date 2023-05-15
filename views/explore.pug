@@ -8,7 +8,7 @@ html
         link(rel='stylesheet',href='/public/css/tags-preview.css')
         link(rel='stylesheet',href='/public/css/commans.css') 
         title TRext Explore
-    body
+    body(ng-app="exploreEvents")
         header
            nav.explore-tab-nav
                .hyperlinks-section
@@ -18,7 +18,7 @@ html
                        a(href="/") Home
                        a(href="/") Create
                p Explore Trext's on your favorite topics created by earthly begins. 
-        .container
+        .container(ng-controller='exploreController')
             .search-options
                 - var resultsCriteria = 'Rendering all'
                 .search-section
@@ -32,7 +32,7 @@ html
                     p.results=resultsCriteria
                     p.results-count='Found: '+data.length
             each obj in data
-                .main-card
+                .main-card(data-redirect-url=obj.custom_url,ng-click='redirectToPage($event)')
                    .card-header
                        - var title = obj.text_header
                        if !title
@@ -41,6 +41,5 @@ html
                        .page-description
                            strong Description
                            p.description!=obj.meta_information
-                       p.date='Pub: '+obj.date
-                   .card-footer
-                           a(class='open-page',href='/'+obj.custom_url) Open
+                       .card-footer
+                           p.date=obj.date

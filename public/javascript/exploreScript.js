@@ -48,6 +48,31 @@ async function loopTopics(topics){
 		await sleep(1000);
         }
 }
+
+
+
+//trigger functions
 document.addEventListener('DOMContentLoaded', function() {
   loopTopics(topics);
+});
+
+
+//controller functions
+var event;
+function redirectToPage($event){
+	var target = $event.target;
+	event = target;
+	while(target && !target.classList.contains('main-card')){
+		target = target.parentNode;
+	}
+	if (target && target.classList.contains('main-card')){
+		var redirectUrl = target.dataset.redirectUrl;
+		window.location.href='/'+redirectUrl;
+	}
+}
+
+//controller settings
+var explore_events = angular.module('exploreEvents',[]);
+explore_events.controller('exploreController',function($scope){
+	$scope.redirectToPage = redirectToPage;
 });
