@@ -26,8 +26,7 @@ let collection;
 
 //explore tab
 app.get('/explore',function(req,res){
-	res.send('hold on');
-	//controller.getExplorePage(req,res,collection);
+	routes.explore(req,res,collection);
 });
 
 app.get('/',function(req,res){

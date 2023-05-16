@@ -1,11 +1,15 @@
 const formatText = require('../../lib/formatText');
 const dbMethods = require('../../lib/dbMethods');
-var tf = new formatText();
+
+
+var ft = new formatText();
+
+
 function checkField(object,field){
 	var exists = Object.keys(object).includes(field);
 	return exists
 }
-const getExplorePage = async (req,res,collection)=>{
+async function explore(req,res,collection){
 	var data = [];
 	var tag = ""
 	const dbc = new dbMethods(req,collection,find='query');
@@ -23,13 +27,12 @@ const getExplorePage = async (req,res,collection)=>{
 			var date = object['date'];
 			date = dbc.format_date(date);
 			object['date'] = date;
-			object.meta_information = tf.formatHashtags(tf.purify(object.meta_information));
+			object.meta_information = ft.formatHashtags(ft.purify(object.meta_information));
 			display_data.push(object)
 		}
             }
 	})
 	res.render('explore',{'data':display_data,'resultsBy':tag});
 }
-module.exports={
-	'getExplorePage':getExplorePage,
-}
+
+module.exports=explore;
