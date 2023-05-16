@@ -5,7 +5,7 @@ function checkField(object,field){
 	var exists = Object.keys(object).includes(field);
 	return exists
 }
-exports.getExplorePage = async (req,res,collection)=>{
+const getExplorePage = async (req,res,collection)=>{
 	var data = [];
 	var tag = ""
 	const dbc = new dbMethods(req,collection,find='query');
@@ -31,5 +31,5 @@ exports.getExplorePage = async (req,res,collection)=>{
 	res.render('explore',{'data':display_data,'resultsBy':tag});
 }
 module.exports={
-	'getExplorePage':exports.getExplorePage,
+	'getExplorePage':getExplorePage,
 }
