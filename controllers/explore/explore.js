@@ -1,9 +1,7 @@
 const formatText = require('../../lib/formatText');
 const dbMethods = require('../../lib/dbMethods');
-
-
+const applyFilters = require('./applyFilters');
 var ft = new formatText();
-
 
 function checkField(object,field){
 	var exists = Object.keys(object).includes(field);
@@ -11,16 +9,16 @@ function checkField(object,field){
 }
 async function explore(req,res,collection){
 	var data = [];
-	var tag = ""
+	var tag = "";
 	const dbc = new dbMethods(req,collection,find='query');
 	await dbc.fetchByTag().then(fetched_data=>{
 		tag = dbc.resultsBy;
 		if(dbc.exists()){
 			data = fetched_data;
-			console.log(data);
+//			console.log(data);
 		}
 	})
-	const display_data = [];
+	var display_data = [];
 	data.map(function(object){
 	    if(checkField(object,'description') && checkField(object,'tags')){
 		if(object.tags.length > 0){
@@ -32,6 +30,8 @@ async function explore(req,res,collection){
 		}
             }
 	})
+	display_data = applyFilters(req,display_data);
+	//console.log(display_data);
 	res.render('explore',{'data':display_data,'resultsBy':tag});
 }
 

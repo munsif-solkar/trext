@@ -22,7 +22,7 @@ html(lang="en")
                .tags_preview
                    each tag in tags
                        p.tag
-                           a(href='/explore?tag='+tag)=tag
+                           a(href='/explore?tag='+tag.slice(1))=tag
        .text_body
            main
              pre.text-body-content !{data['text_body']}
