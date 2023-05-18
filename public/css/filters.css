@@ -1,0 +1,69 @@
+.filters-section{
+	background:none;
+	margin:8px;
+}
+.filters-section details summary{
+	background:#444444;
+	max-width:max-content;
+	padding:5px 10px;
+	color:#fff;
+	border-radius:10px;
+}
+.filters{
+	border:1px solid #ccc;
+	background:#fff;
+	margin:5px 0px;
+}
+.filters-title{
+	padding:5px 10px;
+	border-bottom:1px solid #ccc;
+}
+.filters-actions{
+	padding:0.5rem
+}
+.filters-actions .text{
+	font-weight:bold;
+	margin:5px 0px;
+}
+.sort-selector{
+	padding:5px 10px;
+	margin:5px 0px;
+	outline:none;
+	background:#f8f8f8;
+	border:1px solid #ccc;
+}
+.sort-selector option{
+	padding:5px 10px;
+}
+.limit-filter .limit-value,.limit-button{
+	padding:0.5rem;
+	border:1px solid #ccc;
+	outline:none;
+	font-size:16px;
+}
+.limit-button{
+	background:#f8f8f8;
+	color:#000;
+	font-weight:bold;
+	width:40px;
+}
+.limit-value{
+	margin:0px 2px;
+	border:1px solid #ccc;
+	width:60px;
+	text-align:center;
+	font-weight:bold;
+}
+.apply-filters{
+	text-align:right;
+}
+.apply-filters button{
+	margin:10px 0px 0px 0px;
+	padding:0.5rem 1rem;
+	background:none;
+	color:#444444;
+	font-weight:bold;
+	border:none;
+	border-radius:10px;
+	text-decoration:underline;
+}

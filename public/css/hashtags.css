@@ -24,7 +24,7 @@ border:none;
 padding:10px 12px;
 height:100px;
 color: #051d6c;
-
+font-family:sans-serif;
 }
 .hashtags-constructor{
 	display:flex;

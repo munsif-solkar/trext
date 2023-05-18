@@ -1,1 +1,20 @@
-p hello
+link(rel='stylesheet',href='/public/css/filters.css')
+script(src='/public/javascript/filters.js')
+form.filters-section(ng-controller="filters_controller",action='/explore',ng-model='filters_form',ng-submit='apply_filters($event)')
+    details
+        summary Filters
+        .filters
+            p.filters-title Apply filters to your search
+            .filters-actions
+                .sort-filter
+                     p.text Sort By
+                     select.sort-selector(name='sort')
+                        option(selected,value='latest_to_oldest') Latest To Oldest
+                        option(value='oldest_to_latest') Oldest To Latest
+                .limit-filter
+                     p.text Limit
+                     button.decrement-limit.limit-button(type='button',ng-click="setLimit($event)") -
+                     input.limit-value(type='number',value='0',name='limit')
+                     button.increment-limit.limit-button(type='button',ng-click="setLimit($event)") +
+                .apply-filters
+                     button.apply-filters-button(type='submit') Apply filters      

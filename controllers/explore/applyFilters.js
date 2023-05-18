@@ -1,7 +1,7 @@
 const filters = ['sort','limit'];
 
 function sort(sortBy,data){
-	if(sortBy=='latest_to_oldest'){
+	if(sortBy=='oldest_to_latest'){
 		data = data.reverse();
 		return data;
 	}else{

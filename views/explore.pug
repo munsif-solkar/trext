@@ -24,8 +24,9 @@ html
                 .search-section
                     form.search-event(method='get',action='/explore')
                         p.tag-icon #
-                        input.search-input(type='text',placeholder='Search by tag',name='tag',required,maxlength='20',value=resultsBy)
+                        input.search-input.tag-search(type='text',placeholder='Search by tag',name='tag',required,maxlength='20',value=resultsBy)
                         button.search-button(type='submit') Search
+                    include explore_filters.pug
                 .results-criteria
                     if resultsBy
                         - var resultsCriteria='Results by: #'+resultsBy

@@ -54,6 +54,7 @@ async function loopTopics(topics){
 //trigger functions
 document.addEventListener('DOMContentLoaded', function() {
   loopTopics(topics);
+  fetchFilters();
 });
 
 
