@@ -1,6 +1,7 @@
 const dbMethods = require('../lib/dbMethods');
 const verifyEntries = require('../lib/verifyEntries');
 const splitMetaInformation = require('../lib/splitMetaInformation');
+const checkFields = require('../lib/checkFields');
 
 function verify_code(code,codex){
         if(code != codex){
@@ -9,8 +10,11 @@ function verify_code(code,codex){
 }
 function edit_post(req,res,collection){
 	const new_data = req.body;
-        var explore;
-        console.log(new_data);
+	if(!checkFields(new_data)){
+		res.send('Invalid data');
+		return;
+	}
+	console.log(Object.keys(new_data));
         const dbc = new dbMethods(req,collection);
         if(dbc.url_query == 'howtouse' && !admin){
                 res.redirect('/'+dbc.url_query);

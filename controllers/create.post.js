@@ -2,9 +2,15 @@ const dbMethods = require('../lib/dbMethods');
 const splitMetaInformation = require('../lib/splitMetaInformation');
 const checkUrlAvailability = require('../lib/checkUrlAvailability');
 const verifyEntries = require('../lib/verifyEntries');
+const checkFields = require('../lib/checkFields');
+
 async function create_post(req,res,collection){
 	const dbc = new dbMethods(req,collection);
-        var fdata = req.body;
+	var fdata = req.body;
+	if(!checkFields(fdata)){
+		res.send("Invalid data");
+		return;
+	}
         var text_header = fdata.text_header;
         var text_body = fdata.text_body;
         var edit_code = fdata.edit_code.replace(" ","");
