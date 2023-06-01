@@ -73,6 +73,9 @@ padding:6px 10px;
 	color:#444444;
 	line-height:22px;
 	word-wrap:break-word;
+	max-height:155px;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 .card-footer{
 	padding:1rem 10px;

@@ -12,6 +12,7 @@ function view(req,res,collection){
                   }
                   const purify = ft.purify(data.text_body);
                   data.text_body = ft.applyAll(purify);
+		  data.meta_information = ft.formatHashtags(data.meta_information);
                   res.render('view_text',data);
               }else{
                   res.send("Nothing found here!!");

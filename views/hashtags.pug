@@ -1,6 +1,6 @@
 link(rel='stylesheet',href='/public/css/hashtags.css')
 script(src='/public/javascript/tagsConstrustor.js')
 .hashtags-container(ng-controller='hashtags')
-    p.title Description for your page to describe it better, adding hashtags [#sometag] makes your page accessible from explore tab (optional).
-    p.title.tags-counter= 'Tags: '+'{{tags.length}}'
-    textarea(ng-model='metaInformation',class='render-tags meta-information',ng-change="constructTag(metaInformation)",placeholder='Description....',name='meta_information')=meta_information
+    p.title Description for your page to describe it better, adding hashtags makes your page accessible from explore tab (optional).
+    p.title.tags-counter= 'Tags: '+'{{tags_counter}}'
+    textarea(ng-model='metaInformation',class='render-tags meta-information',ng-change="constructTag(metaInformation)",placeholder='Description....',name='meta_information',maxlength='1000')=meta_information

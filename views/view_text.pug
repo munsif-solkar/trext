@@ -18,11 +18,10 @@ html(lang="en")
        header
            p.text_header=text_title
            span.date="Pub: "+data['date']
-           if tags
-               .tags_preview
-                   each tag in tags
-                       p.tag
-                           a(href='/explore?tag='+tag.slice(1))=tag
+           if meta_information
+               details
+                   summary Description
+                   p.description!=meta_information
        .text_body
            main
              pre.text-body-content !{data['text_body']}

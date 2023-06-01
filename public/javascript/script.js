@@ -21,7 +21,14 @@ app.controller("page-control", function($scope,$rootScope){
 		e.select();
 		document.execCommand('copy');
 	    };
-	    $scope.path = function(url_key){
+	    $scope.path = function(url_key,$event){
+		const regex = /[^a-zA-Z0-9]/;
+		const urlPreview = document.querySelector('.custom-url-preview');
+		if(url_key && url_key.match(regex)!=null){
+			urlPreview.classList.add('onError');
+		}else{
+			urlPreview.classList.remove('onError')
+		}
 		var url = window.location.href.replace(window.location.pathname,"");
 		if(url.endsWith('/')){
 			url = url.slice(0,-1);

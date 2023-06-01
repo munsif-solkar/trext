@@ -2,7 +2,7 @@ const dbMethods = require('../lib/dbMethods');
 const verifyEntries = require('../lib/verifyEntries');
 const splitMetaInformation = require('../lib/splitMetaInformation');
 const checkFields = require('../lib/checkFields');
-
+var admin = false;
 function verify_code(code,codex){
         if(code != codex){
                 throw "incorrect edit code!";

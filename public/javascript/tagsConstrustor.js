@@ -1,12 +1,15 @@
 var scope;
+var parent;
+var tags_limit = 30;
 app.controller('hashtags',function($scope){
 	scope = $scope;
+	parent = scope.$parent
 	$scope.constructTag = constructTag;
-	$scope.$parent.tags = [];
+	parent.tags = [];
+	parent.tags_counter = 0;
 });
 
 function constructTag(tags){
-	console.log(tags);
 	const tagCriteria = /#[a-zA-Z0-9]{1,50}\b/g;
 	tags = tags.trim();
 	tags_matches = tags.match(tagCriteria);
@@ -21,12 +24,15 @@ function constructTag(tags){
 
 function addTag(tags){
 	if(tags === null){
-		scope.$parent.tags = [];
+		parent.tags = [];
 		return;
 	}
-	if(tags.length<=30){
-	    scope.$parent.tags = tags;
-        }else{
-	    throw "You met Max tags limit (30) please remove some tags";
+	parent.tags = tags;
+	//console.log(parent.tags.length)
+	if(tags.length > tags_limit){
+		parent.tags_counter = '-'+(tags.length-tags_limit);
+	}
+	else{
+		parent.tags_counter = tags.length;
 	}
 }
