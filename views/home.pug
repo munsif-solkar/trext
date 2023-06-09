@@ -2,8 +2,8 @@ html(ng-app='trext')
   head
     title TRext Host your text
     meta(name='description' content="Trext is a platform that allows you to create and share text content with a range of formatting options. Whether you're looking to write a blog post, a personal journal entry, or a professional document, our site makes it easy to add emphasis, style, and clarity to your writing.")
-    meta(name='viewport', content='width=device-width,initial-scale=1.0')
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js')
+    include viewport.pug
+    include angular_cdn.pug
     script(src='/public/javascript/module.js')
     script(src='/public/javascript/tagsConstrustor.js')
     script(src='/public/javascript/script.js')
@@ -20,6 +20,10 @@ html(ng-app='trext')
               a(href='/explore') Explore
         p Expose your text by creating simple &amp; minimal webpage
     .container
+      if logged
+         p You are logged in
+      else
+         p Not logged in
       if error
         p.error_message=error
       if mode=='create'

@@ -43,3 +43,6 @@ Header .other-pages a{
     Background:none;
     Padding:5px 10px;
 }
+.container-header{
+	padding:0px 5px;
+}

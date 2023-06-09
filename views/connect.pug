@@ -1,0 +1,35 @@
+html
+    head
+        title TRext Register/Login
+        include viewport.pug
+        include angular_cdn.pug
+        link(rel='stylesheet',href='../public/css/commans.css')
+        link(rel='stylesheet',href='../public/css/connect.css')
+    body
+       include header.pug
+       .container
+           .container-header
+               if error
+                   p.error_message=error
+               p.text-bold.uc You'll need an Telegram account to proceed!
+               p.text TRext uses Telegram to register users and manage their accounts.
+           .register
+               p.text-bold.uc New to Trext?
+               p.text Register
+               section
+                   p.text-bold Steps to create account
+                   ol.steps
+                       li Visit TRext Telegram bot.
+                       li Start the Bot via Start Button or '/start' command.
+                       li After starting the Bot it will display Help message to get you started
+                       li Once registered you can use the provided Login id to Login into Trext.
+           .login
+                p.text-bold.uc Login
+                section    
+                    p.text-bold In case you've forgotten your Login Id
+                        ol.steps
+                            li Type command '/loginid' in Bot and You'll get your Login Id if you are registered user.
+                form.login-form(method='post',action='/connect')
+                       .login-form-actions
+                           input(type='text',placeholder='Login id',name='login_id',minlength='5',required)
+                           button(type='submit') Login

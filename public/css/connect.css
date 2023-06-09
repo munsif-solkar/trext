@@ -1,0 +1,83 @@
+.container{
+	padding:10px 15px;
+}
+.alert{
+	border:1px solid #dadada;
+	border-radius:5px;
+	padding:5px 8px;
+	margin:0px 0px 10px 0px;
+	background:#444444;
+	color:#fff;
+	font-size:16px;
+}
+.error_message{
+    color:red;
+    padding:4px 8px;
+    border-left:3px solid red;
+    border-radius:0px;
+    margin:0px 10px;
+}
+.register,.login{
+	background:#fff;
+	border:1px solid #dadada;
+	border-radius:5px;
+	padding:0.5rem 1rem;
+	margin:10px 0px;
+	width:100%;
+}
+.login-form{
+padding:5px;
+}
+.login-form-actions{
+	display:flex;
+	flex-direction:column;
+}
+.login-form input,button{
+	padding:0.8rem;
+	outline:none;
+	margin:5px 0px;
+	border:1px solid #ccc;
+	border-radius:5px;
+}
+.login-form input{
+	text-transform:ppercase;
+	font-weight:bold;	
+	letter-spacing:1px;
+}
+.login-form button{
+background:#444444;
+color:#fff;
+width:40%;
+align-self:flex-end;
+}
+section{
+	margin:10px 0px 0px 0px;
+}
+.text,.text-bold,.text-2,li{
+	font-family:sans-serif;
+	line-height:20px;
+}
+.uc{
+	text-transform:uppercase;
+	font-size:18px;
+	padding:8px 0px;
+}
+.text{
+	line-height:20px;
+}
+.text-bold{
+	font-weight:bold;
+	line-height:22px;	
+}
+.text-2{
+	font-size:16px;
+}
+ol.steps{
+	list-style-position:outside;	
+	margin:8px 30px;
+	list-style-type:disc;
+}
+.steps li{
+	margin:10px 0px;
+	color:#444444;
+}

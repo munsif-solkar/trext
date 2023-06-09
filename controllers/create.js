@@ -1,4 +1,5 @@
 const create = async (req,res,collection=null)=>{
+	const sess = req.session;
 	query={
                 'error':0,
                 'text_title':"",
@@ -10,6 +11,11 @@ const create = async (req,res,collection=null)=>{
                 'description':'',
                 'tags':[]
         }
+	if(sess.logged){
+		query.logged = true;
+		query.login_id = sess.login_id;
+		console.log(query);
+	}
         res.render('home',query);
 }
 module.exports = create;

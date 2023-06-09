@@ -4,6 +4,7 @@ function edit(req,res,collection){
 	const dbc = new dbMethods(req,collection);
         dbc.fetchByUrl().then(function(fetched_data){
                 if(dbc.exists()){
+		  console.log(fetched_data.edit_code);
                     data = dbc.edit_mode(error=0,setEditMode=fetched_data);
                     if(dbc.url_query=='howtouse' && !admin){
                         data['text_body'] = "Dude you can't edit this.";

@@ -1,0 +1,3 @@
+TRext Menu,
+
+To open this menu again you can navigate to bottom left menu button
