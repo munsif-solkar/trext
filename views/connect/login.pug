@@ -1,0 +1,10 @@
+.login
+      p.text-bold.uc Login
+      section
+          p.text-bold In case you've forgotten your Login Id
+              ol.steps
+                  li Go to Bot !{"<span class='text-bold'>Menu->Login Id</span>"} and You'll get your Login Id if you are registered user.
+      form.login-form(method='post',action='/connect')
+              .login-form-actions
+                 input(type='text',placeholder='Login id',name='login_id',minlength='5',required)
+                 button(type='submit') Login

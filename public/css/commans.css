@@ -31,11 +31,12 @@ Header nav p{
     Margin:15px 0px 0px 0px;
 	line-height:20px
 }
-Header .other-pages a{
+.other-pages a,.hyperlink{
 	font-size:14px;
 	margin:0px 5px;
 	text-decoration:underline;
-	border:none
+	border:none;
+	color:#151719;
 }
 .container{
     Max-width:500px;
@@ -46,3 +47,37 @@ Header .other-pages a{
 .container-header{
 	padding:0px 5px;
 }
+.alert{
+        border:1px solid #dadada;
+        border-radius:5px;
+        padding:5px 8px;
+        margin:0px 0px 10px 0px;
+        background:#444444;
+        color:#fff;                                                                         font-size:16px;
+}
+.uc{
+        text-transform:uppercase;
+        font-size:18px;
+        padding:8px 0px;                                                            }
+.text,.text-bold,.text-2,li{
+        font-family:sans-serif;
+        line-height:20px;
+}
+.text{
+        line-height:20px;
+}
+.text-bold{
+        font-weight:bold;
+        line-height:22px;
+}
+.text-2{
+        font-size:16px;
+	font-weight:300;
+}
+.y-space{
+	margin:5px 0px;
+}
+.x-space{
+	margin:0px 5px;
+}
+

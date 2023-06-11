@@ -2,19 +2,20 @@ const dbMethods = require('../lib/dbMethods');
 const verifyEntries = require('../lib/verifyEntries');
 const splitMetaInformation = require('../lib/splitMetaInformation');
 const checkFields = require('../lib/checkFields');
-var admin = false;
-function verify_code(code,codex){
-        if(code != codex){
-                throw "incorrect edit code!";
-        }
-}
+const checkOwner = require('../lib/checkOwner');
+
 function edit_post(req,res,collection){
 	const new_data = req.body;
+	const sess = req.session;
 	if(!checkFields(new_data)){
 		res.send('Invalid data');
 		return;
 	}
-	console.log(Object.keys(new_data));
+	if(!sess.logged){
+		res.send('You are not logged in');
+		return;
+	}
+	//console.log(Object.keys(new_data));
         const dbc = new dbMethods(req,collection);
         if(dbc.url_query == 'howtouse' && !admin){
                 res.redirect('/'+dbc.url_query);
@@ -24,7 +25,10 @@ function edit_post(req,res,collection){
                 if(dbc.exists()){
                         const date = fetched_data.date;
                         try{
-                                verify_code(new_data.edit_code,fetched_data.edit_code);
+                                if(!checkOwner(fetched_data,sess).owner){
+					res.redirect('/'+fetched_data.custom_url);
+					return;
+				}
                                 var meta_info = new_data.meta_information;
                                 new_data.description = splitMetaInformation(meta_info,filter='description');
                                 new_data.tags = splitMetaInformation(meta_info,filter='tags');
@@ -34,7 +38,7 @@ function edit_post(req,res,collection){
                                 res.redirect('/'+new_data.custom_url);
                         }
 			catch(err){
-                                new_data['custom_url'] = fetched_data.custom_url;
+                                new_data.custom_url = fetched_data.custom_url;
                                 data = dbc.edit_mode(error=err,new_data)
                                 res.render('home',data);
                         }

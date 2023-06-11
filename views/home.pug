@@ -20,10 +20,7 @@ html(ng-app='trext')
               a(href='/explore') Explore
         p Expose your text by creating simple &amp; minimal webpage
     .container
-      if logged
-         p You are logged in
-      else
-         p Not logged in
+      include logged.pug
       if error
         p.error_message=error
       if mode=='create'
@@ -41,13 +38,6 @@ html(ng-app='trext')
             section(class='hashtags-section')
               .section-child
                    include hashtags.pug
-            // key
-            section
-              label(for='edit_code') Edit code
-              .section-child
-                  input.page-key.input-group(type='text', placeholder='....',ng-model='page_key', maxlength='50',name='edit_code',value=edit_code,required,id='edit_code')
-                  if mode=='create'
-                      button.generate-random-key.button-group.control-buttons(type='button',ng-click='page_key=genRandom()',required) Random
             // custom url
             section
               label Custom url

@@ -1,7 +1,6 @@
 app.controller("page-control", function($scope,$rootScope){
 		$scope.text_header = attrVal('.page-title');
 		$scope.text_body = attrVal('.textbox');
-		$scope.page_key = attrVal('.page-key');
 		$scope.custom_url = attrVal('.custom-url');
 		$scope.form = document.getElementsByClassName('main-form')[0];
 		$scope.metaInformation = attrVal('.meta-information');

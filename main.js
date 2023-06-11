@@ -32,8 +32,12 @@ app.use(session({
 let db;
 
 let collection;
-//ROUTES
 
+//BOT
+let Bot;
+
+
+//ROUTES
 
 //connect
 app.get('/connect',function(req,res){
@@ -43,6 +47,11 @@ app.get('/connect',function(req,res){
 app.post('/connect',function(req,res){
 	routes.connect_post(req,res,collection.users);
 });
+
+app.get('/profile',function(req,res){
+	routes.profile(req,res,collection);
+});
+
 //explore tab
 app.get('/explore',function(req,res){
 	routes.explore(req,res,collection.text_data);
@@ -56,7 +65,7 @@ app.get('/',function(req,res){
 
 //create post
 app.post('/',function(req,res){
-	routes.create_post(req,res,collection.text_data);
+	routes.create_post(req,res,collection.text_data,Bot);
 })
 
 //view page
@@ -74,13 +83,12 @@ app.post('/edit/:page_path',(req,res)=>{
 	routes.edit_post(req,res,collection.text_data);
 })
 
-
-
 //START SERVER ON SUCCESSFULL DATABASE CONNECTION;
 connectDatabase().then(function(){
         collection = getCollection()
 	console.log("Starting Bot");
 	const bot = new botWorker(getCollection());
+	Bot = bot;
 	bot.listen();
 	console.log("Starting Server");
 	var server = app.listen(5500, function(err) {

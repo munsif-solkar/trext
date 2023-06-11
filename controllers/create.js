@@ -4,7 +4,6 @@ const create = async (req,res,collection=null)=>{
                 'error':0,
                 'text_title':"",
                 'text_body':"",
-		'edit_code':"",
                 'custom_url':"",
                 'mode':'create',
                 'meta-information':"",
@@ -14,7 +13,6 @@ const create = async (req,res,collection=null)=>{
 	if(sess.logged){
 		query.logged = true;
 		query.login_id = sess.login_id;
-		console.log(query);
 	}
         res.render('home',query);
 }

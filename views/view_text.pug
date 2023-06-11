@@ -28,7 +28,8 @@ html(lang="en")
            .app-credits
               a(href="/") Create Your TRext
            aside
-               a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
+               if owner
+                   a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
                a(class="share_button",title="Share link",ng-click='share()') Share
 
     include footer.pug

@@ -75,5 +75,5 @@ function redirectToPage($event){
 //controller settings
 var explore_events = angular.module('exploreEvents',[]);
 explore_events.controller('exploreController',function($scope){
-	$scope.redirectToPage = redirectToPage;
+	
 });

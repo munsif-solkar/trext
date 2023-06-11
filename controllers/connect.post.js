@@ -5,7 +5,7 @@ async function connect_post(req,res,collection){
 	var login_id;
 	try{
 	    const form_data = req.body;
-	    login_id = form_data.login_id;
+	    login_id = form_data.login_id.toUpperCase();
 	}
 	catch(err){
 	    res.redirect('/connect');
@@ -19,9 +19,10 @@ async function connect_post(req,res,collection){
 		return;
 	}
 	sess.login_id = login_id;
+	sess.telegram_id = user[0].telegram_id;
 	sess.logged = true;
 	console.log(sess);
-	res.send(user);
+	res.redirect('/');
 }
 
 module.exports = connect_post;

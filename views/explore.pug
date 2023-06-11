@@ -32,15 +32,5 @@ html
                         - var resultsCriteria='Results by: #'+resultsBy
                     p.results=resultsCriteria
                     p.results-count='Found: '+data.length
-            each obj in data
-                .main-card(data-redirect-url=obj.custom_url,ng-click='redirectToPage($event)')
-                   .card-header
-                       - var title = obj.text_header
-                       if !title
-                           title='Untitled'
-                       p.title=title
-                       .page-description
-                           strong Description
-                           p.description!=obj.meta_information
-                       .card-footer
-                           p.date=obj.date
+            include showPageData.pug
+            include footer.pug
