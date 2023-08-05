@@ -4,7 +4,7 @@ const dbClient = require('./lib/dbMethods');
 const bodyParser = require("body-parser");
 const path = require("path");
 const textFormat = require('./lib/formatText');
-
+ 
 const app = exp()
 
 //STATIC FILES SETUP
