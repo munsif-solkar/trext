@@ -1,0 +1,18 @@
+html
+    head
+        title TRext Register/Login
+        include viewport.pug
+        include angular_cdn.pug
+        link(rel='stylesheet',href='../public/css/commans.css')
+        link(rel='stylesheet',href='../public/css/connect.css')
+    body
+       include header.pug
+       .container
+           .container-header
+               if error
+                   p.error_message=error
+               p.text-bold.uc You'll need an Telegram account to proceed!
+               p.text TRext uses Telegram to register users and manage their accounts.
+           include ./connect/login.pug
+           include ./connect/register.pug
+       include footer.pug

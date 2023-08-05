@@ -1,0 +1,36 @@
+html
+    head
+        meta(name='description',content="Explore Trext's created by everyone.")
+        include viewport.pug
+        include angular_cdn.pug
+        script(src="/public/javascript/exploreScript.js")
+        link(rel='stylesheet',href='/public/css/explore.css')
+        link(rel='stylesheet',href='/public/css/tags-preview.css')
+        link(rel='stylesheet',href='/public/css/commans.css') 
+        title TRext Explore
+    body(ng-app="exploreEvents")
+        header
+           nav.explore-tab-nav
+               .hyperlinks-section
+                   a(href='/explore',class='nav-title')
+                       strong TRext Explore
+                   .other-pages
+                       a(href="/") Home
+                       a(href="/") Create
+               p Explore Trext's on your favorite topics created by earthly begins. 
+        .container(ng-controller='exploreController')
+            .search-options
+                - var resultsCriteria = 'Rendering all'
+                .search-section
+                    form.search-event(method='get',action='/explore')
+                        p.tag-icon #
+                        input.search-input.tag-search(type='text',placeholder='Search by tag',name='tag',required,maxlength='20',value=resultsBy)
+                        button.search-button(type='submit') Search
+                    include explore_filters.pug
+                .results-criteria
+                    if resultsBy
+                        - var resultsCriteria='Results by: #'+resultsBy
+                    p.results=resultsCriteria
+                    p.results-count='Found: '+data.length
+            include showPageData.pug
+            include footer.pug

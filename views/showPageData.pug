@@ -1,0 +1,14 @@
+script(src='../public/javascript/card.js')
+link(rel='stylesheet',href='../public/css/cards.css')
+each obj in data
+     .main-card(data-redirect-url=obj.custom_url,onClick='redirectToPage(this)')
+         .card-header
+            - var title = obj.text_header
+                 if !title
+                    title='Untitled'
+                 p.title=title
+                 .page-description
+                       strong Description
+                       p.description!=obj.meta_information
+                 .card-footer
+                       p.date=obj.date

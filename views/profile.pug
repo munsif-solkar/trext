@@ -1,0 +1,27 @@
+html
+    head
+        title TRext Profile
+        include viewport.pug
+        include angular_cdn.pug
+        link(rel='stylesheet',href='../public/css/commans.css')
+        link(rel='stylesheet',href='../public/css/profile.css')
+    body
+        include header.pug
+        .container
+            .container-header
+                p.text-bold.uc Profile
+            .profile-details.container-header 
+                p.text-bold.y-space!="Name <span class='text-2'>(never shared)</span>"
+                  if telegram_data.last_name
+                     - var full_name = telegram_data.first_name +' '+telegram_data.lastname
+                  else
+                     - var full_name = telegram_data.first_name
+                  p.text=telegram_data.first_name
+                p.text-bold.y-space='Date Joined'
+                  p.text=user.date
+                p.text-bold.y-space='Total Posts'
+                  p.text=data.length
+            .posts
+                p.text-bold.container-header Your Posts
+                include showPageData.pug
+        include footer.pug

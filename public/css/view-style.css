@@ -34,7 +34,21 @@ header .date{
     padding:5px 2px;
     font-size:14px;
     color:gray;
-    word-spacing:5px;
+    word-spacing:3px;
+}
+summary{
+	outline:none;
+	font-weight:bold;
+	margin:5px 0px;
+	color:#444444;
+}
+.description{
+    padding:5px 10px;
+    line-height:23px;
+    background:none;
+    margin:3px 4px;
+    border-left:1px solid #444444;
+    word-spacing:2px;
 }
 .text_body{
     min-height:300px;

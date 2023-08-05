@@ -2,28 +2,34 @@ html(lang="en")
     head
         - var text_title = data['text_header']
         meta(charset="UTF-8")
-        meta(name="viewport",content="width=device-width,initial-scale=1.0")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js")
-        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js")
+        include viewport.pug
+        include angular_cdn.pug
+        meta(name="description",content=description)
         script(src="/public/javascript/view.js")
         if text_title
             title=text_title
         else
             title='TRext page'
         link(rel="stylesheet",href="/public/css/view-style.css")
+        link(rel='stylesheet',href='/public/css/tags-preview.css')
     body(ng-app="trextViewModule")
     .container
        header
            p.text_header=text_title
            span.date="Pub: "+data['date']
+           if meta_information
+               details
+                   summary Description
+                   p.description!=meta_information
        .text_body
            main
              pre.text-body-content !{data['text_body']}
        .container_footer(ng-controller='footer-actions')
            .app-credits
-              a(href="/") TRext
+              a(href="/") Create Your TRext
            aside
-               a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
+               if owner
+                   a(href="/edit/"+data['custom_url'],class="edit_button",title="Edit this page") Edit
                a(class="share_button",title="Share link",ng-click='share()') Share
 
     include footer.pug
