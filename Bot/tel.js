@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const nb = require('node-telegram-bot-api')
 const fs = require('fs');
 const dbc = require('../lib/dbMethods');

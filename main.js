@@ -1,3 +1,4 @@
+require('dotenv').config()
 const exp = require("express");
 const session = require("express-session");
 const {connectDatabase,getCollection,connected} = require('./lib/dbIntegration');
