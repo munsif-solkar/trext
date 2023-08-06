@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const nb = require('node-telegram-bot-api')
 const fs = require('fs');
 const dbc = require('../lib/dbMethods');
@@ -8,11 +10,11 @@ const buttons = require('./buttons');
 
 const help = () =>{return fs.readFileSync(path.join(__dirname,'help.txt'),{encoding:'utf8',flag:'r'}).trim()};
 
+
 class botWorker{
 	constructor(collection){
 		try{
-		    const token = fs.readFileSync(path.join(__dirname,'token'),
-    			    { encoding: 'utf8', flag: 'r' }).trim();
+		    const token = process.env.BOT_TOKEN
 		    this.bot = new nb(token,{polling:true});
 		    console.log('Bot started');
 		}
