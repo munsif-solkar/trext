@@ -1,5 +1,3 @@
-const config = require('../config')
-
 const nb = require('node-telegram-bot-api')
 const fs = require('fs');
 const dbc = require('../lib/dbMethods');
@@ -14,7 +12,7 @@ const help = () =>{return fs.readFileSync(path.join(__dirname,'help.txt'),{encod
 class botWorker{
 	constructor(collection){
 		try{
-		    const token = config.BOT_TOKEN
+		    const token = process.env.BOT_TOKEN
 		    this.bot = new nb(token,{polling:true});
 		    console.log('Bot started');
 		}
